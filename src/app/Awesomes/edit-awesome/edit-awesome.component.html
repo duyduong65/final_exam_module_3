@@ -1,0 +1,41 @@
+<div class="card mt-2">
+  <div class="card-header">
+    Edit Awesome
+  </div>
+  <div class="card-body">
+    <form [formGroup]="editAwesomeForm">
+      <div class="form-group">
+        <label>Tag</label>
+        <input type="text" class="form-control" formControlName="tag">
+        <div *ngIf="tag.invalid">
+          <div *ngIf="tag.errors.required" class="text-danger">
+            truong nay khong duoc de trong
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>URL</label>
+        <input type="text" class="form-control" formControlName="url">
+        <div *ngIf="url.invalid">
+          <div *ngIf="url.errors.required" class="text-danger">
+            truong nay khong duoc de trong
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>description</label>
+        <textarea class="form-control" formControlName="descriptions"></textarea>
+        <div *ngIf="descriptions.invalid">
+          <div *ngIf="descriptions.errors.required" class="text-danger">
+            truong nay khong duoc de trong
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary offset-1" (click)="update()" [disabled]="!editAwesomeForm.valid">Update</button>
+        <button class="btn btn-secondary offset-3" [routerLink]="['']">Cancel</button>
+        <button class="btn btn-danger offset-3" (click)="destroy()">Remove</button>
+      </div>
+    </form>
+  </div>
+</div>
